@@ -16,6 +16,7 @@ item			nvarchar(255),
 quantity		int,
 price			decimal,
 )
+drop table cusomters
 Insert into cusomters(customerid,fisrtname,lastname,city,state) -- thêm dữ liệu vào bảng cusomters
 values	(10101,'John','Gray','Lynden','Washington'),
 		(10298,'Leroy','Brown','Pinetop','Arizona'),
@@ -102,22 +103,36 @@ values
 
 		 Nguyễn Phi Nhật (Câu 2, 8, 13, 14)
 		 2.Select all columns from the items_ordered table for whoever purchased a Tent.
+
 		 8.For all of the tents that were ordered in the items_ordered table, what is the price of the lowest tent?
 		 Hint: Your query should return the price only.
 		 13.From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table.
 		 Only display the results if the maximum price for one of the items is greater than 190.00.
 		 14.How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made,
 		 and the sum of their orders if they purchased more than 1 item.
-		 Start Nguyễn Phi Nhật
+		 */
+		 -- Start Nguyễn Phi Nhật
+		 
+		 /* Câu 2 */
+		 select * from items_ordered -- hiển thị tất cả các cột của bảng items_ordered
+		 where item ='Tent' -- với điều kiện item='Tent'
+		 /* Câu 8*/
+		 select item,Min(price) as MinPrice from items_ordered -- truy vấn, hiển thị giá thấp nhất trong bảng items_ordered
+		 where item='Tent' group by item -- với điều kiện item = 'Tent'
+		 
+		 /* Câu 13 */
+		 select item, MAX(price) as MaxPrice, MIN(price) as Minprice from items_ordered  -- truy vấn và hiển thị item, giá tối đa, tối thiểu trong bảng items_ordered
+		 group by item having MAX(price) > 190 -- nhóm các giá trị trên vào cột item và sử dụng câu lệnh having để lọc các giá trị price lớn hơn 190 và hiển thị ra
+		
+		 /* Câu 14 */
+		 select customerid, COUNT(quantity) as Soluongdondathang, SUM(price) as Tonggiadondathang from items_ordered -- truy vấn và hiển thị customerid, soluongdondathang , tonggiadondathang 
+		 group by customerid having COUNT(quantity) > 1 -- nhóm các giá trị ở trên vào customerid và sử dụng câu lệnh having count để lọc số lượng(quanlity) lớn hơn 1 và hiển thị ra
+		 
 
+		 
 
-
-
-
-
-
-
-		 End Nguyễn Phi Nhật
+		 -- End Nguyễn Phi Nhật
+		 /*
 
 
 		 Phan Văn Tin (Câu 5, 11, 17)
