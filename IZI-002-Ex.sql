@@ -146,7 +146,49 @@ values
 		 Start Đào Duy Phương
 
 
-
+		/* Câu 6  : */
+			SELECT AVG(price) as TongTienTB
+			FROM items_ordered
+			WHERE  MONTH(order_date) = 12
+			
+			/*
+			Ex : Sử dụng hàm AVG để tính tổng trung bình (Price) , Đặt tên (TongTienTB) 
+			của bảng items_ordered trong tháng 12 */
+		
+			/* Câu 12  : */
+			SELECT state, COUNT(customerid)as TongSo
+			FROM cusomters
+			GROUP BY state
+			HAVING COUNT(customerid) > 1
+			
+			
+			/*
+				Hiển thị stata và tông số Khách hàng thỏa điều kiện khách hàng nhiều hơn 1 state 
+				Vì ta nhóm bằng Group by nên Having để tạo điền kiện cho nó .Chớ không thể dùng where ở trên 
+			*/
+			
+			/* Câu 18  : */
+			SELECT customerid, order_date, item
+			FROM items_ordered
+			WHERE (item <> 'Snow shoes') AND (item <> 'Ear muffs');
+			
+			/*
+				Hiển thị các trường trong đề , 
+				Từ bẳng items_ordered 
+				và thỏa điều kiện item khác 'Snow shoes' or 'Ear muffs' .Dấu  "<>" phủ định (ko có cái này )
+			*/
+			
+			
+			/* Câu 21  : */
+			SELECT fisrtname, city, state
+			FROM cusomters
+			WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii');
+			
+			/*
+				Hiển thị các trường trong đề , 
+				Từ bẳng cusomters 
+				và thỏa điều kiện state thuộc các giá trị trên , ở đây ta có thể sử dụng nhiều cách để làm . Nhưng đơn giản là Dùng IN là bên trong .
+			*/
 
 
 
