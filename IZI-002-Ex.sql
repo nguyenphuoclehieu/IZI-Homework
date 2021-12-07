@@ -87,23 +87,27 @@ values
 		  1. From the items_ordered table, select a list of all items purchased for customerid 10449. 
 		  Display the customerid, item, and price for this customer.
 		  16. Same thing as exercise #1, but display the results in Descending order.
-		  Start LeHieu
 
+
+		  */
+		 -- Start Nguyễn Phước Lê Hiếu
+		 
+		 /* Câu 1 */
+		 select customerid,item,price --truy xuat cac field trong bảng items_ordered
+			from items_ordered
+			where customerid = 10449; -- với điều kiện là customerid = 10449
+		 /* Câu 16*/
+			 SELECT customerid,item,price -- truy xuat cac field trong bảng items_ordered
+			FROM items_ordered
+			where customerid = 10449 -- với điều kiện là customerid = 10449
+			ORDER BY item , price  DESC; -- và nếu set hàm này theo giá trị giảm dần thì chúng ta dùng desc
+
+		 -- End Nguyễn Phước Lê Hiếu
+		 /*
 		
-		 
-		 
-		 
-		 End LeHieu
-		 
-
-
-
-
-
 
 		 Nguyễn Phi Nhật (Câu 2, 8, 13, 14)
 		 2.Select all columns from the items_ordered table for whoever purchased a Tent.
-
 		 8.For all of the tents that were ordered in the items_ordered table, what is the price of the lowest tent?
 		 Hint: Your query should return the price only.
 		 13.From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table.
@@ -128,9 +132,6 @@ values
 		 select customerid, COUNT(quantity) as Soluongdondathang, SUM(price) as Tonggiadondathang from items_ordered -- truy vấn và hiển thị customerid, soluongdondathang , tonggiadondathang 
 		 group by customerid having COUNT(quantity) > 1 -- nhóm các giá trị ở trên vào customerid và sử dụng câu lệnh having count để lọc số lượng(quanlity) lớn hơn 1 và hiển thị ra
 		 
-
-		 
-
 		 -- End Nguyễn Phi Nhật
 		 /*
 
