@@ -217,15 +217,34 @@ values
 		 count is used to count rows in a column, sum works on numeric data only.
 		 15.Select the lastname, firstname, and city for all customers in the customers table. Display the results in Ascending Order based on the lastname.
 		 19.Select the item and price of all items that start with the letters 'S', 'P', or 'F'.
-		 Start Trương Tiến Dũng 
+		*/
+		--Start Trương Tiến Dũng 
+		 --Câu 3  : 
+			SELECT customerid, order_date, item   --lấy giá trị của 3 cột customerid, order_date, item và hiển thị
+			FROM items_ordered					  --Từ bảng items_ordered
+			WHERE item LIKE 'S%'				  -- với câu điều kiện lấy chữ cái đầu tiên bắt đầu bằng chữ S trong cột item
+			;
+
+		 --Câu 9  : 
+			SELECT state, COUNT(state) as tong    -- Dùng count để lấy giá trị duy nhất của cột state và gán cho tên trường là tổng
+			FROM cusomters group by state		  -- Từ bảng cusomters là gộp các state trùng nhau lại thành 1 nhóm để biết state có bao nhiêu người
+
+		 --Câu 15 : 
+			SELECT lastname,fisrtname,city		-- Lấy giá trị và hiển trị là cột lastname,fisrtname,city 
+			FROM cusomters order by lastname ASC --Từ bảng cusomters và sắp xếp theo thứ tự từ A -> Z
+
+		 --Câu 19 : 
+			SELECT item, price												-- Lấy giá trị và hiển thị 2 cột item, price 
+			FROM items_ordered												-- của bảng items_ordered
+			WHERE item LIKE'S%' OR item LIKE'P%' OR item LIKE'F%';			-- Với điều kiện lấy chữ cài đầu tiên bắt đầu bằng chứ S ,P hoặc F trong cột item
 
 
 
 
 
 
-
-		 End Trương Tiến Dũng 
+		 --End Trương Tiến Dũng 
+		 /*
 		
 		 Lê Hoàng Luật (Câu 4, 7, 10, 20)
 		 4.Select the distinct items in the items_ordered table. In other words, display a listing of each of the unique items from the items_ordered table.
