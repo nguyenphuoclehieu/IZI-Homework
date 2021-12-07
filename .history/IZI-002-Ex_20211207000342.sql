@@ -1,4 +1,4 @@
-﻿go
+﻿go 
 create database DBORDER --Tạo database có tên là DBORDER
 use DBORDER
 
@@ -34,9 +34,9 @@ values	(10101,'John','Gray','Lynden','Washington'),
 		(10438,'Kevin','Smith','Durango','Colerado'),
 		(10439,'Conrad','Giles','Telluride','Colerado'),
 		(10449,'Isabele','Moore','Yama','Arizona');
-
+		
 Insert into items_ordered(customerid,order_date,item,quantity,price) -- thêm dữ liệu vào bảng items_ordered
-values
+values 
 	(10330,'2021-12-06','Pogo stick',1,28.00),
 	(10101,'2021-12-07','Raft',1,58.00),
 	(10298,'2021-12-08','Skateboard',1,33.00),
@@ -83,23 +83,17 @@ values
 		--------------------------------------------------------Bài tập-------------------------------------------------------------------
 
 		  /* Nguyễn Phước Lê Hiếu (Tạo Database, câu 1, và 16)
-		  1. From the items_ordered table, select a list of all items purchased for customerid 10449.
+		  1. From the items_ordered table, select a list of all items purchased for customerid 10449. 
 		  Display the customerid, item, and price for this customer.
 		  16. Same thing as exercise #1, but display the results in Descending order.
 		  Start LeHieu
 
-			select customerid,item,price --truy xuat cac field trong bảng items_ordered
-			from items_ordered
-			where customerid = 10449; -- với điều kiện là customerid = 10449
-
-			 SELECT customerid,item,price -- truy xuat cac field trong bảng items_ordered
-			FROM items_ordered
-			where customerid = 10449 -- với điều kiện là customerid = 10449
-			ORDER BY item , price  DESC; -- và nếu set hàm này theo giá trị giảm dần thì chúng ta dùng desc
-
-
+		
+		 
+		 
+		 
 		 End LeHieu
-
+		 
 
 
 
@@ -128,9 +122,9 @@ values
 
 		 Phan Văn Tin (Câu 5, 11, 17)
 		 5.Select the maximum price of any item ordered in the items_ordered table. Hint: Select the maximum price only.
-		 11.How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made, and the sum of their orders.
+		 11.How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made, and the sum of their orders. 
 		 Click the Group By answers link below if you have any problems.
-		 17.Select the item and price for all of the items in the items_ordered table that the price is greater than 10.00.
+		 17.Select the item and price for all of the items in the items_ordered table that the price is greater than 10.00. 
 		 Display the results in Ascending order based on the price.
 		 Start Phan Văn Tin
 
@@ -166,7 +160,7 @@ values
 		 count is used to count rows in a column, sum works on numeric data only.
 		 15.Select the lastname, firstname, and city for all customers in the customers table. Display the results in Ascending Order based on the lastname.
 		 19.Select the item and price of all items that start with the letters 'S', 'P', or 'F'.
-		 Start Trương Tiến Dũng
+		 Start Trương Tiến Dũng 
 
 
 
@@ -174,8 +168,8 @@ values
 
 
 
-		 End Trương Tiến Dũng
-
+		 End Trương Tiến Dũng 
+		
 		 Lê Hoàng Luật (Câu 4, 7, 10, 20)
 		 4.Select the distinct items in the items_ordered table. In other words, display a listing of each of the unique items from the items_ordered table.
 		 7.What are the total number of rows in the items_ordered table?
