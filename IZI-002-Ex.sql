@@ -175,31 +175,23 @@ values
 		 7.What are the total number of rows in the items_ordered table?
 		 10.From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table. Hint: The items will need to be broken up into separate groups.
 		 20.Select the date, item, and price from the items_ordered table for all of the rows that have a price value ranging from 10.00 to 80.00.
-		 Start Lê Hoàng Luật
+		*/		
+		--Start Lê Hoàng Luật
+		SELECT DISTINCT item			-- Chọn giá trị DISTINCT từ cột item
+		FROM items_ordered;				-- trong bảng items_ordered
+		--câu 7
+		SELECT COUNT(*)					--COUNT(*) trả về số dòng
+		FROM items_ordered;				-- trong bảng items_ordered
+		--câu 10
+		SELECT item, max(price) MaxPrice, min(price) MinPrice --Chọn mặt hàng, giá tối đa và giá tối thiểu cho từng mặt hàng cụ thể
+		FROM items_ordered				-- trong bảng items_ordered
+		GROUP BY item;					-- sắp xếp dữ liệu giống nhau thành	các nhóm	
+		--câu 20
+		SELECT order_date, item, price   -- Chọn giá trị của order_date, item,price
+		FROM items_ordered				--  Trong bảng items_ordered	
+		WHERE price BETWEEN 10.00 AND 80.00;-- điều kiện là giá trị price trong khoảng 10.000 đến 80.000
 
-
-
-
-
-
-
-		 End Lê Hoàng Luật
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	 --End Lê Hoàng Luật
 
 
 
@@ -212,4 +204,19 @@ values
 
 
 
-		 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
