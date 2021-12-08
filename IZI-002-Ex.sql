@@ -145,7 +145,18 @@ values
 		 Start Phan Văn Tin
 
 
+--câu5 
+SELECT item, max(price) as Max_Price FROM items_ordered GROUP BY item ORDER BY item
+-- Đầu tiên dựa vào keyword max(price) để lấy ra giá trị price max
+-- dựa vào keyword GROUP BY thì sẽ show ra mỗi giá trị max price tương ứng với mỗi item
 
+--câu11
+SELECT DISTINCT CustomerId, Count(*) as count, SUM(price) as sum FROM items_ordered GROUP BY CustomerId;
+-- Sử dụng keyword Count và Sum để tính số lần orders và tổng giá tiền của mỗi customer đã được GROUP
+
+ --câu17 
+SELECT item, price FROM items_ordered WHERE price > 10.00;
+-- xuất ra item và price tương ứng và lọc ra những item nào có giá lớn hơn 10 trong bảng items_ordered
 
 
 
