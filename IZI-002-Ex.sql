@@ -83,122 +83,95 @@ values
 
 		--------------------------------------------------------Bài tập-------------------------------------------------------------------
 
-		  /* Nguyễn Phước Lê Hiếu (Tạo Database, câu 1, và 16)
-		  1. From the items_ordered table, select a list of all items purchased for customerid 10449. 
-		  Display the customerid, item, and price for this customer.
-		  16. Same thing as exercise #1, but display the results in Descending order.
-
-
-		  */
-		 -- Start Nguyễn Phước Lê Hiếu
+		  -- Nguyễn Phước Lê Hiếu (Tạo Database, câu 1, và 16)
+		  -- Start Nguyễn Phước Lê Hiếu
 		 
-		 /* Câu 1 */
-		 select customerid,item,price --truy xuat cac field trong bảng items_ordered
-			from items_ordered
-			where customerid = 10449; -- với điều kiện là customerid = 10449
-		 /* Câu 16*/
-			 SELECT customerid,item,price -- truy xuat cac field trong bảng items_ordered
-			FROM items_ordered
-			where customerid = 10449 -- với điều kiện là customerid = 10449
-			ORDER BY item , price  DESC; -- và nếu set hàm này theo giá trị giảm dần thì chúng ta dùng desc
+		 -- Câu 1 
+				select customerid,item,price --truy xuat cac field trong bảng items_ordered
+				from items_ordered
+				where customerid = 10449; -- với điều kiện là customerid = 10449
+		 -- Câu 16
+				SELECT customerid,item,price -- truy xuat cac field trong bảng items_ordered
+				FROM items_ordered
+				where customerid = 10449 -- với điều kiện là customerid = 10449
+				ORDER BY item , price  DESC; -- và nếu set hàm này theo giá trị giảm dần thì chúng ta dùng desc
 
 		 -- End Nguyễn Phước Lê Hiếu
-		 /*
+
 		
 
-		 Nguyễn Phi Nhật (Câu 2, 8, 13, 14)
-		 2.Select all columns from the items_ordered table for whoever purchased a Tent.
-		 8.For all of the tents that were ordered in the items_ordered table, what is the price of the lowest tent?
-		 Hint: Your query should return the price only.
-		 13.From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table.
-		 Only display the results if the maximum price for one of the items is greater than 190.00.
-		 14.How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made,
-		 and the sum of their orders if they purchased more than 1 item.
-		 */
+		 --Nguyễn Phi Nhật (Câu 2, 8, 13, 14)
 		 -- Start Nguyễn Phi Nhật
 		 
-		 /* Câu 2 */
-		 select * from items_ordered -- hiển thị tất cả các cột của bảng items_ordered
-		 where item ='Tent' -- với điều kiện item='Tent'
-		 /* Câu 8*/
-		 select item,Min(price) as MinPrice from items_ordered -- truy vấn, hiển thị giá thấp nhất trong bảng items_ordered
-		 where item='Tent' group by item -- với điều kiện item = 'Tent'
+		 -- Câu 2 
+				 select * from items_ordered -- hiển thị tất cả các cột của bảng items_ordered
+				 where item ='Tent' -- với điều kiện item='Tent'
+
+		 -- Câu 8
+				 select item,Min(price) as MinPrice from items_ordered -- truy vấn, hiển thị giá thấp nhất trong bảng items_ordered
+				 where item='Tent' group by item -- với điều kiện item = 'Tent'
 		 
-		 /* Câu 13 */
-		 select item, MAX(price) as MaxPrice, MIN(price) as Minprice from items_ordered  -- truy vấn và hiển thị item, giá tối đa, tối thiểu trong bảng items_ordered
-		 group by item having MAX(price) > 190 -- nhóm các giá trị trên vào cột item và sử dụng câu lệnh having để lọc các giá trị price lớn hơn 190 và hiển thị ra
+		 -- Câu 13 
+				 select item, MAX(price) as MaxPrice, MIN(price) as Minprice from items_ordered  -- truy vấn và hiển thị item, giá tối đa, tối thiểu trong bảng items_ordered
+				 group by item having MAX(price) > 190 -- nhóm các giá trị trên vào cột item và sử dụng câu lệnh having để lọc các giá trị price lớn hơn 190 và hiển thị ra
 		
-		 /* Câu 14 */
-		 select customerid, COUNT(quantity) as Soluongdondathang, SUM(price) as Tonggiadondathang from items_ordered -- truy vấn và hiển thị customerid, soluongdondathang , tonggiadondathang 
-		 group by customerid having COUNT(quantity) > 1 -- nhóm các giá trị ở trên vào customerid và sử dụng câu lệnh having count để lọc số lượng(quanlity) lớn hơn 1 và hiển thị ra
+		 -- Câu 14 
+				 select customerid, COUNT(quantity) as Soluongdondathang, SUM(price) as Tonggiadondathang from items_ordered -- truy vấn và hiển thị customerid, soluongdondathang , tonggiadondathang 
+				 group by customerid having COUNT(quantity) > 1 -- nhóm các giá trị ở trên vào customerid và sử dụng câu lệnh having count để lọc số lượng(quanlity) lớn hơn 1 và hiển thị ra
 		 
 		 -- End Nguyễn Phi Nhật
-		 /*
+		 
 
 
-		 Phan Văn Tin (Câu 5, 11, 17)
-		 5.Select the maximum price of any item ordered in the items_ordered table. Hint: Select the maximum price only.
-		 11.How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made, and the sum of their orders. 
-		 Click the Group By answers link below if you have any problems.
-		 17.Select the item and price for all of the items in the items_ordered table that the price is greater than 10.00. 
-		 Display the results in Ascending order based on the price.
-		 Start Phan Văn Tin
+		 -- Phan Văn Tin (Câu 5, 11, 17)
+		 --Start Phan Văn Tin
 
 
---câu5 
-SELECT item, max(price) as Max_Price FROM items_ordered GROUP BY item ORDER BY item
--- Đầu tiên dựa vào keyword max(price) để lấy ra giá trị price max
--- dựa vào keyword GROUP BY thì sẽ show ra mỗi giá trị max price tương ứng với mỗi item
+		--câu5 
+				SELECT item, max(price) as Max_Price FROM items_ordered GROUP BY item ORDER BY item
+				-- Đầu tiên dựa vào keyword max(price) để lấy ra giá trị price max
+				-- dựa vào keyword GROUP BY thì sẽ show ra mỗi giá trị max price tương ứng với mỗi item
 
---câu11
-SELECT DISTINCT CustomerId, Count(*) as count, SUM(price) as sum FROM items_ordered GROUP BY CustomerId;
--- Sử dụng keyword Count và Sum để tính số lần orders và tổng giá tiền của mỗi customer đã được GROUP
+		--câu11
+				SELECT DISTINCT CustomerId, Count(*) as count, SUM(price) as sum FROM items_ordered GROUP BY CustomerId;
+				-- Sử dụng keyword Count và Sum để tính số lần orders và tổng giá tiền của mỗi customer đã được GROUP
 
- --câu17 
-SELECT item, price FROM items_ordered WHERE price > 10.00;
--- xuất ra item và price tương ứng và lọc ra những item nào có giá lớn hơn 10 trong bảng items_ordered
+		 --câu17 
+				SELECT item, price FROM items_ordered WHERE price > 10.00;
+				-- xuất ra item và price tương ứng và lọc ra những item nào có giá lớn hơn 10 trong bảng items_ordered
+
+		 -- End Phan Văn Tin
 
 
 
-
-		 End Phan Văn Tin
-
-		 Đào Duy Phương (Câu 6, 12, 18, 21)
-		 6.Select the average price of all of the items ordered that were purchased in the month of Dec.
-		 12.How many people are in each unique state in the customers table that have more than one person in the state?
-		 Select the state and display the number of how many people are in each if it's greater than 1.
-		 18.Select the customerid, order_date, and item from the items_ordered table for all items unless they are 'Snow Shoes' or if they are 'Ear Muffs'.
-		 Display the rows as long as they are not either of these two items.
-		 21.Select the firstname, city, and state from the customers table for all of the rows where the state value is either: Arizona, Washington, Oklahoma, Colorado, or Hawaii.
-		 Start Đào Duy Phương
+		 -- Đào Duy Phương (Câu 6, 12, 18, 21)
+		 -- Start Đào Duy Phương
 
 
-		/* Câu 6  : */
-			SELECT AVG(price) as TongTienTB
-			FROM items_ordered
-			WHERE  MONTH(order_date) = 12
+		-- Câu 6 
+				SELECT AVG(price) as TongTienTB
+				FROM items_ordered
+				WHERE  MONTH(order_date) = 12
 			
 			/*
 			Ex : Sử dụng hàm AVG để tính tổng trung bình (Price) , Đặt tên (TongTienTB) 
 			của bảng items_ordered trong tháng 12 */
 		
-			/* Câu 12  : */
-			SELECT state, COUNT(customerid)as TongSo
-			FROM cusomters
-			GROUP BY state
-			HAVING COUNT(customerid) > 1
-			
-			
+		-- Câu 12 
+				SELECT state, COUNT(customerid)as TongSo
+				FROM cusomters
+				GROUP BY state
+				HAVING COUNT(customerid) > 1
+
 			/*
 				Hiển thị stata và tông số Khách hàng thỏa điều kiện khách hàng nhiều hơn 1 state 
 				Vì ta nhóm bằng Group by nên Having để tạo điền kiện cho nó .Chớ không thể dùng where ở trên 
 			*/
 			
-			/* Câu 18  : */
-			SELECT customerid, order_date, item
-			FROM items_ordered
-			WHERE (item <> 'Snow shoes') AND (item <> 'Ear muffs');
-			
+		-- Câu 18  : 
+				SELECT customerid, order_date, item
+				FROM items_ordered
+				WHERE (item <> 'Snow shoes') AND (item <> 'Ear muffs');
 			/*
 				Hiển thị các trường trong đề , 
 				Từ bẳng items_ordered 
@@ -206,78 +179,58 @@ SELECT item, price FROM items_ordered WHERE price > 10.00;
 			*/
 			
 			
-			/* Câu 21  : */
-			SELECT fisrtname, city, state
-			FROM cusomters
-			WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii');
+		-- Câu 21  : 
+				SELECT fisrtname, city, state
+				FROM cusomters
+				WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii');
 			
 			/*
 				Hiển thị các trường trong đề , 
 				Từ bẳng cusomters 
 				và thỏa điều kiện state thuộc các giá trị trên , ở đây ta có thể sử dụng nhiều cách để làm . Nhưng đơn giản là Dùng IN là bên trong .
 			*/
+		 -- End Đào Duy Phương
 
 
-
-
-		 End Đào Duy Phương
-
-
-		 Trương Tiến Dũng (Câu 3, 9, 15, 19)
-		 3.Select the customerid, order_date, and item values from the items_ordered table for any items in the item column that start with the letter "S".
-		 9.How many people are in each unique state in the customers table? Select the state and display the number of people in each. Hint:
-		 count is used to count rows in a column, sum works on numeric data only.
-		 15.Select the lastname, firstname, and city for all customers in the customers table. Display the results in Ascending Order based on the lastname.
-		 19.Select the item and price of all items that start with the letters 'S', 'P', or 'F'.
-		*/
-		--Start Trương Tiến Dũng 
+		 -- Trương Tiến Dũng (Câu 3, 9, 15, 19)
+		 --Start Trương Tiến Dũng 
 		 --Câu 3  : 
-			SELECT customerid, order_date, item   --lấy giá trị của 3 cột customerid, order_date, item và hiển thị
-			FROM items_ordered					  --Từ bảng items_ordered
-			WHERE item LIKE 'S%'				  -- với câu điều kiện lấy chữ cái đầu tiên bắt đầu bằng chữ S trong cột item
+				SELECT customerid, order_date, item   --lấy giá trị của 3 cột customerid, order_date, item và hiển thị
+				FROM items_ordered					  --Từ bảng items_ordered
+				WHERE item LIKE 'S%'				  -- với câu điều kiện lấy chữ cái đầu tiên bắt đầu bằng chữ S trong cột item
 			;
 
 		 --Câu 9  : 
-			SELECT state, COUNT(state) as tong    -- Dùng count để lấy giá trị duy nhất của cột state và gán cho tên trường là tổng
-			FROM cusomters group by state		  -- Từ bảng cusomters là gộp các state trùng nhau lại thành 1 nhóm để biết state có bao nhiêu người
+				SELECT state, COUNT(state) as tong    -- Dùng count để lấy giá trị duy nhất của cột state và gán cho tên trường là tổng
+				FROM cusomters group by state		  -- Từ bảng cusomters là gộp các state trùng nhau lại thành 1 nhóm để biết state có bao nhiêu người
 
 		 --Câu 15 : 
-			SELECT lastname,fisrtname,city		-- Lấy giá trị và hiển trị là cột lastname,fisrtname,city 
-			FROM cusomters order by lastname ASC --Từ bảng cusomters và sắp xếp theo thứ tự từ A -> Z
+				SELECT lastname,fisrtname,city		-- Lấy giá trị và hiển trị là cột lastname,fisrtname,city 
+				FROM cusomters order by lastname ASC --Từ bảng cusomters và sắp xếp theo thứ tự từ A -> Z
 
 		 --Câu 19 : 
-			SELECT item, price												-- Lấy giá trị và hiển thị 2 cột item, price 
-			FROM items_ordered												-- của bảng items_ordered
-			WHERE item LIKE'S%' OR item LIKE'P%' OR item LIKE'F%';			-- Với điều kiện lấy chữ cài đầu tiên bắt đầu bằng chứ S ,P hoặc F trong cột item
-
-
-
-
-
+				SELECT item, price												-- Lấy giá trị và hiển thị 2 cột item, price 
+				FROM items_ordered												-- của bảng items_ordered
+				WHERE item LIKE'S%' OR item LIKE'P%' OR item LIKE'F%';			-- Với điều kiện lấy chữ cài đầu tiên bắt đầu bằng chứ S ,P hoặc F trong cột item
 
 		 --End Trương Tiến Dũng 
-		 /*
 		
-		 Lê Hoàng Luật (Câu 4, 7, 10, 20)
-		 4.Select the distinct items in the items_ordered table. In other words, display a listing of each of the unique items from the items_ordered table.
-		 7.What are the total number of rows in the items_ordered table?
-		 10.From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table. Hint: The items will need to be broken up into separate groups.
-		 20.Select the date, item, and price from the items_ordered table for all of the rows that have a price value ranging from 10.00 to 80.00.
-		*/		
+		
+		-- Lê Hoàng Luật (Câu 4, 7, 10, 20)	
 		--Start Lê Hoàng Luật
-		SELECT DISTINCT item			-- Chọn giá trị DISTINCT từ cột item
-		FROM items_ordered;				-- trong bảng items_ordered
+				SELECT DISTINCT item			-- Chọn giá trị DISTINCT từ cột item
+				FROM items_ordered;				-- trong bảng items_ordered
 		--câu 7
-		SELECT COUNT(*)					--COUNT(*) trả về số dòng
-		FROM items_ordered;				-- trong bảng items_ordered
+				SELECT COUNT(*)					--COUNT(*) trả về số dòng
+				FROM items_ordered;				-- trong bảng items_ordered
 		--câu 10
-		SELECT item, max(price) MaxPrice, min(price) MinPrice --Chọn mặt hàng, giá tối đa và giá tối thiểu cho từng mặt hàng cụ thể
-		FROM items_ordered				-- trong bảng items_ordered
-		GROUP BY item;					-- sắp xếp dữ liệu giống nhau thành	các nhóm	
+				SELECT item, max(price) MaxPrice, min(price) MinPrice --Chọn mặt hàng, giá tối đa và giá tối thiểu cho từng mặt hàng cụ thể
+				FROM items_ordered				-- trong bảng items_ordered
+				GROUP BY item;					-- sắp xếp dữ liệu giống nhau thành	các nhóm	
 		--câu 20
-		SELECT order_date, item, price   -- Chọn giá trị của order_date, item,price
-		FROM items_ordered				--  Trong bảng items_ordered	
-		WHERE price BETWEEN 10.00 AND 80.00;-- điều kiện là giá trị price trong khoảng 10.000 đến 80.000
+				SELECT order_date, item, price   -- Chọn giá trị của order_date, item,price
+				FROM items_ordered				--  Trong bảng items_ordered	
+				WHERE price BETWEEN 10.00 AND 80.00;-- điều kiện là giá trị price trong khoảng 10.000 đến 80.000
 
 	 --End Lê Hoàng Luật
 
